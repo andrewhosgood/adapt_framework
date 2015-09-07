@@ -28,6 +28,11 @@ module.exports = function(grunt) {
         return isExcluded;
     }
 
+    var getAppDir = function() {
+        var appdir = appendSlash(grunt.option('appdir')) || 'app/';
+        return appdir;
+    };
+
     var getSourceDir = function() {
         var sourcedir = appendSlash(grunt.option('sourcedir')) || 'src/';
         return sourcedir;
@@ -48,6 +53,11 @@ module.exports = function(grunt) {
         return menu || '**';
     };
 
+    var getPort = function() {
+        var port = grunt.option('port');
+        return port || 9001;
+    };
+
     var appendSlash = function(dir) {
         if (dir) {
             var lastChar = dir.substring(dir.length - 1, dir.length);
@@ -57,12 +67,14 @@ module.exports = function(grunt) {
 
     grunt.initConfig({
         sourcedir: getSourceDir(),
+        appdir: getAppDir(),
         outputdir: getOutputDir(),
         theme: getTheme(),
         menu: getMenu(),
+        port: getPort(),
         pkg: grunt.file.readJSON('package.json'),
         jsonlint: {
-            src: [ '<%= sourcedir %>course/**/*.json' ]
+            src: [ '<%= appdir %>course/**/*.json' ]
         },
         copy: {
             index: {
@@ -81,7 +93,7 @@ module.exports = function(grunt) {
                     {
                         expand: true,
                         src: ['**/*', '!**/*.json'],
-                        cwd: '<%= sourcedir %>course/',
+                        cwd: '<%= appdir %>course/',
                         dest: '<%= outputdir %>course/'
                     }
                 ]
@@ -91,7 +103,7 @@ module.exports = function(grunt) {
                     {
                         expand: true,
                         src: ['**/*.json'],
-                        cwd: '<%= sourcedir %>course/',
+                        cwd: '<%= appdir %>course/',
                         dest: '<%= outputdir %>course/'
                     }
                 ]
@@ -227,7 +239,8 @@ module.exports = function(grunt) {
                     '<%= sourcedir %>menu/<%= menu %>/**/*.less',
                     '<%= sourcedir %>components/**/*.less',
                     '<%= sourcedir %>extensions/**/*.less',
-                    '<%= sourcedir %>theme/<%= theme %>/**/*.less'
+                    '<%= sourcedir %>theme/<%= theme %>/**/*.less',
+                    '<%= appdir %>/**/*.less'
                 ],
                 dest: '<%= sourcedir %>less/adapt.less'
             }
@@ -261,7 +274,11 @@ module.exports = function(grunt) {
                         '<%= sourcedir %>core/**/*.hbs',
                         '<%= sourcedir %>extensions/**/*.hbs',
                         '<%= sourcedir %>menu/<%= menu %>/**/*.hbs',
-                        '<%= sourcedir %>theme/<%= theme %>/**/*.hbs'
+                        '<%= sourcedir %>theme/<%= theme %>/**/*.hbs',
+                        '<%= appdir %>/components/**/*.hbs',
+                        '<%= appdir %>/extensions/**/*.hbs',
+                        '<%= appdir %>/menu/**/*.hbs',
+                        '<%= appdir %>/theme/**/*.hbs'
                     ]
                 }
             }
@@ -280,7 +297,9 @@ module.exports = function(grunt) {
                 dest: '<%= sourcedir %>components/components.js',
                 options: {
                     baseUrl: '<%= sourcedir %>',
-                    moduleName: 'components/components'
+                    moduleName: 'components/components',
+                    appOverrideUrl: '<%= appdir %>components',
+                    requireOverrideBaseUrl: 'app/components'
                 }
             },
             extensions: {
@@ -288,7 +307,9 @@ module.exports = function(grunt) {
                 dest: '<%= sourcedir %>extensions/extensions.js',
                 options: {
                     baseUrl: '<%= sourcedir %>',
-                    moduleName: 'extensions/extensions'
+                    moduleName: 'extensions/extensions',
+                    appOverrideUrl: '<%= appdir %>extensions',
+                    requireOverrideBaseUrl: 'app/extensions'
                 }
             },
             menu: {
@@ -297,7 +318,9 @@ module.exports = function(grunt) {
                 options: {
                     include: '<%= menu %>',
                     baseUrl: '<%= sourcedir %>',
-                    moduleName: 'menu/menu'
+                    moduleName: 'menu/menu',
+                    appOverrideUrl: '<%= appdir %>menu',
+                    requireOverrideBaseUrl: 'app/menu'
                 }
             },
             theme: {
@@ -306,7 +329,9 @@ module.exports = function(grunt) {
                 options: {
                     include: '<%= theme %>',
                     baseUrl: '<%= sourcedir %>',
-                    moduleName: 'themes/themes'
+                    moduleName: 'themes/themes',
+                    appOverrideUrl: '<%= appdir %>theme',
+                    requireOverrideBaseUrl: 'app/theme'
                 }
             }
         },
@@ -334,24 +359,34 @@ module.exports = function(grunt) {
         },
         watch: {
             less: {
-                files: ['<%= sourcedir %>**/*.less'],
+                files: [
+                    '<%= sourcedir %>**/*.less',
+                    '<%= appdir %>**/*.less'
+                ],
                 tasks: ['concat', 'less']
             },
             handlebars: {
-                files: ['<%= sourcedir %>**/*.hbs'],
+                files: [
+                    '<%= sourcedir %>**/*.hbs',
+                    '<%= appdir %>**/*.hbs'
+                ],
                 tasks: ['handlebars', 'requirejs:dev']
             },
             courseJson: {
-                files: ['<%= sourcedir %>course/**/*.json'],
+                files: ['<%= appdir %>course/**/*.json'],
                 tasks : ['jsonlint', 'check-json', 'copy:courseJson']
             },
             courseAssets: {
-                files: ['<%= sourcedir %>course/**/*', '!<%= sourcedir %>course/**/*.json'],
+                files: [
+                    '<%= appdir %>course/**/*',
+                    '!<%= appdir %>course/**/*.json'
+                ],
                 tasks : ['copy:courseAssets']
             },
             js: {
                 files: [
                     '<%= sourcedir %>**/*.js',
+                    '<%= appdir %>**/*.js',
                     '!<%= sourcedir %>components/components.js',
                     '!<%= sourcedir %>extensions/extensions.js',
                     '!<%= sourcedir %>menu/menu.js',
@@ -412,14 +447,14 @@ module.exports = function(grunt) {
         connect: {
             server: {
               options: {
-                port: 9001,
+                port: '<%= port %>',
                 base: '<%= outputdir %>',
                 keepalive:true
               }
             },
             spoorOffline: {
                 options: {
-                    port: 9001,
+                    port: '<%= port %>',
                     base: '<%= outputdir %>',
                     keepalive:true
                 }
@@ -427,20 +462,20 @@ module.exports = function(grunt) {
         },
         adapt_insert_tracking_ids: {
           options: {
-              courseFile: '<%= sourcedir %>course/en/course.json',
-              blocksFile: '<%= sourcedir %>course/en/blocks.json'
+              courseFile: '<%= appdir %>course/en/course.json',
+              blocksFile: '<%= appdir %>course/en/blocks.json'
           }
         },
         adapt_remove_tracking_ids: {
           options: {
-              courseFile: '<%= sourcedir %>course/en/course.json',
-              blocksFile: '<%= sourcedir %>course/en/blocks.json'
+              courseFile: '<%= appdir %>course/en/course.json',
+              blocksFile: '<%= appdir %>course/en/blocks.json'
           }
         },
         adapt_reset_tracking_ids: {
           options: {
-              courseFile: '<%= sourcedir %>course/en/course.json',
-              blocksFile: '<%= sourcedir %>course/en/blocks.json'
+              courseFile: '<%= appdir %>course/en/course.json',
+              blocksFile: '<%= appdir %>course/en/blocks.json'
           }
       },
         clean: {
@@ -461,7 +496,7 @@ module.exports = function(grunt) {
     // This is a simple function to take the course's config.json and append the theme and menu .json
     grunt.registerTask('create-json-config', 'Creating config.json', function() {
         var customItems = ['theme', 'menu'];
-        var configJson = grunt.file.readJSON(grunt.config.get('sourcedir') + 'course/config.json');
+        var configJson = grunt.file.readJSON(grunt.config.get('appdir') + 'course/config.json');
 
         customItems.forEach(function (customItem) {
             // As any theme folder may be used, we need to first find the location of the
@@ -496,7 +531,7 @@ module.exports = function(grunt) {
         var listOfObjectTypes = ['course', 'menu', 'page', 'article', 'block', 'component' ];
             
         // Go through each course folder inside the <%= sourcedir %>course directory
-        grunt.file.expand({filter: 'isDirectory'}, grunt.config.get('sourcedir') + 'course/*').forEach(function(path) {
+        grunt.file.expand({filter: 'isDirectory'}, grunt.config.get('appdir') + 'course/*').forEach(function(path) {
 
             var courseItemObjects = [];
 

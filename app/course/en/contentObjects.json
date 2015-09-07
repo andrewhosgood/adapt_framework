@@ -1,0 +1,24 @@
+[
+	{
+		"_id": "co-10",
+		"_parentId": "course",
+		"_type": "page",
+		"_classes": "",
+		"title": "New Slider Component",
+		"displayTitle": "New Slider Component",
+		"pageBody": "I got annoyed and confused trying to fix the original Adapt slider",
+		"body": "Find out what presentation components are available within the core bundle and how you might consider using them within your courses. ",
+		"_graphic": {
+			"src": "course/en/images/menu_thumb.jpg",
+			"alt": "Placeholder graphic."
+		},
+		"linkText": "View",
+		"visitedText": "Continue",
+		"lockText": "Locked",
+		"durationLabel": "Duration:",
+		"duration": "2 mins",
+		"_pageLevelProgress": {
+			"_isEnabled": true
+		}
+	}
+]

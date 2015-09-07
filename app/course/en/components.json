@@ -1,0 +1,65 @@
+[
+	{
+		"_id": "c-10",
+		"_parentId": "b-10",
+		"_type": "component",
+		"_component": "slider",
+		"_classes": "",
+		"_layout": "full",
+		"title": "Andi's New and Improved Slider",
+		"displayTitle": "Andi's New and Improved Slider",
+		"body": "Written from ground-up: smaller, faster, more efficient, more stable, less maths with CSS-based resizing",
+		"instruction": "...go on &mdash; try and break it!",
+		"_attempts": 2,
+		"_shouldDisplayAttempts": false,
+		"_questionWeight": 1,
+		"_showNumber": true,
+		"_raiseNumber": true,
+		"_showScaleIndicator": false,
+		"labelStart": "incomplete",
+		"labelEnd": "complete",
+		"_scaleStart": 6,
+		"_scaleEnd": 21,
+		"_scaleStep": 3,
+		"_scaleLabel": "",
+		"_correctAnswer": "",
+		"_correctRange": {
+			"_bottom": 12,
+			"_top": 17
+		},
+		"_buttons": {
+		  "_submit": {
+			"buttonText": "Submit",
+			"ariaLabel": "Select here to submit your answer."
+		  },
+		  "_reset": {
+			"buttonText": "Reset",
+			"ariaLabel": ""
+		  },
+		  "_showCorrectAnswer": {
+			"buttonText": "Correct Answer",
+			"ariaLabel": ""
+		  },
+		  "_hideCorrectAnswer": {
+			"buttonText": "My Answer",
+			"ariaLabel": ""
+		  },
+		  "_showFeedback": {
+			"buttonText": "Show feedback",
+			"ariaLabel": ""
+		  },
+		  "remainingAttemptsText": "attempts remaining",
+		  "remainingAttemptText": "final attempt"
+		},
+		"_feedback": {
+			"correct": "This feedback will appear if you answered the question correctly.",
+			"_incorrect": {
+				"notFinal": "Not quite. Try again!",
+				"final": "This feedback will appear if you answered the question incorrectly."
+			}
+		},
+		"_pageLevelProgress": {
+			"_isEnabled": true
+		}
+	}
+]

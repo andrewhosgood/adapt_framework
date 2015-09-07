@@ -1,9 +1,11 @@
 {
     "_id": "course",
     "_type": "course",
-    "title": "Adapt Version 2.0 demonstration",
-    "displayTitle": "Adapt Version 2.0 demonstration",
-    "body": "Welcome to the demonstration build for Version 2.0 of the Adapt framework.<br><br>We’ve added some major new items of functionality to Adapt for this release, most notably accessibility to WAI level AA, Right to Left language support and greatly improved assessments. If you’d like to find out more about this, along with the the other improvements we’ve made then please read the release notes (Link to follow for demo).               ",
+    "title": "Ambassador Online Learning",
+    "displayTitle": "Ambassador Online Learning",
+    "superTitle": "Welcome",
+    "body": "<p>Here you will be able to test your Ambassador knowledge and have the opportunity to win Ambassador hearts. You will win a heart for every question answered correctly. If you answer incorrectly, you will have the chance to re-try a question – but you will not be able to win a heart!</p><p>During CRS in Action Week, from 28 September to 4 October, these hearts will be recorded for your region on the leader board alongside other Ambassadors’ results across Coca-Cola Enterprises. The more hearts you and your fellow region’s Ambassadors win, the higher your region’s heart percentage rating goes up. At the end of the week, the hearts collected will be converted into money and donated to a charity in each region.</p><p><strong>Each section has to be completed in order. Complete the highlighted sections first before unlocking the next challenge. If you want to return to this menu, use the &lt; button at the top. Scroll down to select the first challenge!</strong></p>",
+    "background": "course/en/images/menu-header.jpg",
     "_buttons": {
         "_submit": {
             "buttonText": "Submit",
@@ -82,17 +84,7 @@
         },
         "_extensions": {
             "_pageLevelProgress": {
-                "pageLevelProgress": "Page sections",
-                "pageLevelProgressEnd": "You have reached the end of the list of page sections.",
-                "pageLevelProgressIndicatorBar": "Progress bar. Select here to view your current progress, and select an item to navigate to it. You have completed ",
                 "optionalContent": "Optional Content"
-            }
-        },
-        "_menu": {
-            "_boxmenu": {
-                "ariaRegion": "Menu",
-                "menuItem": "Menu item.",
-                "menuEnd": "You have reached the end of the menu."
             }
         },
         "_accessibility": {
@@ -107,6 +99,9 @@
                 "navigation": "Course navigation bar",
                 "menuLoaded": "Menu Loaded.",
                 "menu": "Menu",
+                "menuItem": "Menu item.",
+                "menuViewButton": "Select here to enter.",
+                "menuEnd": "You have reached the end of the menu.",
                 "page": "Page",
                 "pageLoaded": "Page Loaded.",
                 "pageEnd": "You have reached the end of the page.",
@@ -128,13 +123,18 @@
                 "correct": "Correct",
                 "locked": "Locked",
                 "accessibilityToggleButton": "By selecting this button you can set whether accessibility is turned on or off",
+                "sliderHandle": "Slider handle. Use the left and right arrow keys to move the slider and give your answer. Then tab to the submit button below and press enter.",
+                "hotgraphicPopUp": "Hotgraphic popup.",
                 "feedbackPopUp": "Popup opened.",
                 "menuBack": "Back to menu",
-                "visited": "Visited"
+                "menuIndicatorHeading": "Menu item heading ",
+                "pageLevelProgress": "Page sections",
+                "pageLevelProgressIndicatorBar": "Progress bar. Select here to view your current progress, and select an item to navigate to it. You have completed ",
+                "pageLevelProgressEnd": "You have reached the end of the list of page sections."
             }
         }
     },
-    "_latestTrackingId": 20,
+    "_latestTrackingId": 999,
     "_pageLevelProgress": {
         "_isEnabled": true,
         "_altText": "of components completed on this page."
