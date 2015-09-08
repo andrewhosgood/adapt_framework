@@ -1,11 +1,11 @@
 {
     "_id": "course",
     "_type": "course",
-    "title": "Ambassador Online Learning",
-    "displayTitle": "Ambassador Online Learning",
+    "title": "New Adapt Structure",
+    "displayTitle": "New Adapt Structure",
     "superTitle": "Welcome",
-    "body": "<p>Here you will be able to test your Ambassador knowledge and have the opportunity to win Ambassador hearts. You will win a heart for every question answered correctly. If you answer incorrectly, you will have the chance to re-try a question – but you will not be able to win a heart!</p><p>During CRS in Action Week, from 28 September to 4 October, these hearts will be recorded for your region on the leader board alongside other Ambassadors’ results across Coca-Cola Enterprises. The more hearts you and your fellow region’s Ambassadors win, the higher your region’s heart percentage rating goes up. At the end of the week, the hearts collected will be converted into money and donated to a charity in each region.</p><p><strong>Each section has to be completed in order. Complete the highlighted sections first before unlocking the next challenge. If you want to return to this menu, use the &lt; button at the top. Scroll down to select the first challenge!</strong></p>",
-    "background": "course/en/images/menu-header.jpg",
+    "body": "<p>All the changable items for this course are in a separate folder, allowing the core to be updated without affecting any course-specific code.</p>",
+    "background": "//placekitten.com/1920/300",
     "_buttons": {
         "_submit": {
             "buttonText": "Submit",

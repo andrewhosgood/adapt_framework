@@ -1,6 +1,6 @@
 {
     "dependencies": {
-        "adapt-contrib-vanilla": "develop",
+        "adapt-contrib-vanilla": "*",
         "adapt-contrib-text": "develop",
         "adapt-contrib-narrative": "develop",
         "adapt-contrib-media": "develop",
@@ -19,7 +19,7 @@
         "adapt-contrib-boxMenu": "develop",
         "adapt-contrib-pageLevelProgress": "develop",
         "adapt-contrib-resources": "develop",
-        "adapt-contrib-slider": "develop",
+        "adapt-contrib-slider": "*",
         "adapt-contrib-spoor": "develop",
         "adapt-contrib-bookmarking": "develop"
     }
