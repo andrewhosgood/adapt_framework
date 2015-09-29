@@ -2,3 +2,17 @@ templates
 build
 .DS_Store
 .idea
+src/components
+src/extensions
+src/less
+src/menu
+src/theme
+
+node_modules/grunt-bower-requirejs/node_modules/bower-requirejs/node_modules/update-notifier/node_modules/configstore/node_modules/uuid/benchmark/
+node_modules/grunt-bower-requirejs/node_modules/bower-requirejs/node_modules/update-notifier/node_modules/configstore/node_modules/uuid/test/
+node_modules/grunt-bower-requirejs/node_modules/bower-requirejs/node_modules/update-notifier/node_modules/latest-version/node_modules/package-json/node_modules/got/node_modules/nested-error-stacks/README.md~
+node_modules/grunt-bower-requirejs/node_modules/bower-requirejs/node_modules/update-notifier/node_modules/latest-version/node_modules/package-json/node_modules/registry-url/node_modules/.bin/
+node_modules/grunt-bower-requirejs/node_modules/bower-requirejs/node_modules/update-notifier/node_modules/latest-version/node_modules/package-json/node_modules/registry-url/node_modules/rc/node_modules/
+node_modules/grunt-bower-requirejs/node_modules/bower-requirejs/node_modules/update-notifier/node_modules/latest-version/node_modules/package-json/node_modules/registry-url/node_modules/rc/test/ini.js
+node_modules/grunt-bower-requirejs/node_modules/bower-requirejs/node_modules/update-notifier/node_modules/latest-version/node_modules/package-json/node_modules/registry-url/node_modules/rc/test/nested-env-vars.js
+node_modules/grunt/node_modules/iconv-lite/README.md~
